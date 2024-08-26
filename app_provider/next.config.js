@@ -11,8 +11,8 @@ module.exports = {
 
     config.plugins.push(
       new ModuleFederationPlugin({
-        name: "next3",
-        library: { type: "var", name: "next3" },
+        name: "app_provider",
+        library: { type: "var", name: "app_provider" },
         filename: "static/runtime/remoteEntry.js",
         exposes: {
           "./RemoteComponent": "./app/components/RemoteComponent.tsx",
