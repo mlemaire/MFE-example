@@ -6,3 +6,12 @@ Module Federation in Next.js depends on <a href=« https://www.npmjs.com/package
 
 1. run `pnpm install:all`
 2. run `pnpm run start` and browse to `http://localhost:5001` for the app router consumer or `http://localhost:4001` for the page router consumer
+
+## Module Federation implementation
+
+Work in progress
+
+- [x] page router consumer
+- [x] page router provider
+- [x] app router consumer
+- [ ] app router provider

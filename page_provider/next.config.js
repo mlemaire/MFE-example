@@ -1,5 +1,3 @@
-// next.config.js
-// either from default
 const NextFederationPlugin = require("@module-federation/nextjs-mf");
 
 module.exports = {
@@ -7,9 +5,9 @@ module.exports = {
     const { isServer } = options;
     config.plugins.push(
       new NextFederationPlugin({
-        name: "next2",
+        name: "page_provider",
         remotes: {
-          next1: `next1@http://localhost:4001/_next/static/${
+          page_consumer: `page_consumer@http://localhost:4001/_next/static/${
             isServer ? "ssr" : "chunks"
           }/remoteEntry.js`,
         },

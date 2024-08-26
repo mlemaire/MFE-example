@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
 import { lazy, Suspense } from "react";
 
-const RemoteComponent = dynamic(() => import("next2/RemoteComponent"), {
+const RemoteComponent = dynamic(() => import("page_provider/RemoteComponent"), {
   ssr: false,
 });
-// const RemoteComponent = lazy(() => import("next2/RemoteComponent"));
+const RemoteComponent2 = lazy(() => import("app_provider/RemoteComponent"));
 
 export default function Home() {
   return (
@@ -29,7 +29,7 @@ export default function Home() {
             MFE nextjs (app router)
           </p>
           <Suspense fallback={<div>Loading...</div>}>
-            {/* <RemoteComponent2 name={"Anna"} /> */}
+            <RemoteComponent2 name={"Anna"} />
           </Suspense>
         </div>
       </div>

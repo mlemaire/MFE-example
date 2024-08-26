@@ -7,12 +7,15 @@ module.exports = {
     const { isServer } = options;
     config.plugins.push(
       new NextFederationPlugin({
-        name: "next1",
+        name: "page_consumer",
         filename: "static/chunks/remoteEntry.js",
         remotes: {
-          next2: `next2@http://localhost:4000/_next/static/${
+          page_provider: `page_provider@http://localhost:4000/_next/static/${
             isServer ? "ssr" : "chunks"
           }/remoteEntry.js`,
+          app_provider: `app_provider@http://localhost:5000/_next${
+            isServer ? "/server" : ""
+          }/static/runtime/remoteEntry.js`,
         },
       })
     );
