@@ -1,0 +1,22 @@
+{
+  "name": "nextjs-v14",
+  "private": true,
+  "workspaces": [
+    "./page_provider",
+    "./page_consumer",
+    "./app_provider",
+    "./app_consumer"
+  ],
+  "version": "0.0.0",
+  "scripts": {
+    "start": "concurrently \"pnpm --prefix page_provider run dev\" \"pnpm --prefix page_consumer run dev\" \"pnpm --prefix app_consumer run dev\" \"pnpm --prefix app_provider run dev\"",
+    "install:page_provider": "pnpm --prefix page_provider install",
+    "install:page_consumer": "pnpm --prefix page_consumer install",
+    "install:app_provider": "pnpm --prefix app_provider install",
+    "install:app_consumer": "pnpm --prefix app_consumer install",
+    "install:all": "concurrently \"pnpm install:page_provider\" \"pnpm install:page_consumer\" \"pnpm install:app_provider\" \"pnpm install:app_consumer\""
+  },
+  "dependencies": {
+    "concurrently": "7.6.0"
+  }
+}
