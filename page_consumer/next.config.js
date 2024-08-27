@@ -13,9 +13,9 @@ module.exports = {
           page_provider: `page_provider@http://localhost:4000/_next/static/${
             isServer ? "ssr" : "chunks"
           }/remoteEntry.js`,
-          app_provider: `app_provider@http://localhost:5000/_next${
-            isServer ? "/server" : ""
-          }/static/runtime/remoteEntry.js`,
+          app_provider: `app_provider@http://localhost:5000/_next/static/${
+            isServer ? "ssr" : "chunks"
+          }/remoteEntry.js`,
         },
       })
     );

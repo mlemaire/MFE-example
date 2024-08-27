@@ -1,4 +1,5 @@
 import RemoteComponent from "./mfe_import";
+import RemoteComponent2 from "./mfe_import_app";
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
           <p className="text-sm italic text-slate-400">
             MFE nextjs (app router)
           </p>
-          {/* <RemoteComponent /> */}
+          <RemoteComponent2 name={"Tom"} />
         </div>
       </div>
     </main>

@@ -1,33 +1,22 @@
-// next.config.js
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { NextFederationPlugin } = require("@module-federation/nextjs-mf");
+const path = require("path");
 
 module.exports = {
-  reactStrictMode: true,
-  webpack: (config, options) => {
-    // config.experiments = {
-    //   ...config.experiments,
-    //   outputModule: true,
-    // };
-
+  webpack(config, options) {
+    const { isServer } = options;
     config.plugins.push(
-      new ModuleFederationPlugin({
+      new NextFederationPlugin({
         name: "app_provider",
-        library: { type: "var", name: "app_provider" },
-        filename: "static/runtime/remoteEntry.js",
+        filename: "static/chunks/remoteEntry.js",
         exposes: {
           "./RemoteComponent": "./app/components/RemoteComponent.tsx",
         },
+        shared: {
+          react: { singleton: true, eager: true },
+          "react-dom": { singleton: true, eager: true },
+        },
       })
     );
-
     return config;
-  },
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [{ key: "Access-Control-Allow-Origin", value: "*" }],
-      },
-    ];
   },
 };

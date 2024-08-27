@@ -14,4 +14,21 @@ Work in progress
 - [x] page router consumer
 - [x] page router provider
 - [x] app router consumer
-- [ ] app router provider
+- [x] app router provider
+
+### App router provider
+
+For expose a MFE with a nextjs app router, we need to update the @modulefederation/nextjs-mf package to support the app router.
+Like here :
+
+- https://github.com/module-federation/core/pull/2002/files
+
+And remove on the nextjs-mf/dist/src/plugins/NextFederationPlugin/index.js
+
+```
+   if (manifestPlugin?.appDirEnabled) {
+     throw new Error(
+       "App Directory is not supported by nextjs-mf. Use only pages directory, do not open git issues about this"
+     );
+   }
+```

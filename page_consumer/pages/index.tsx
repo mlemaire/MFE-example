@@ -4,7 +4,9 @@ import { lazy, Suspense } from "react";
 const RemoteComponent = dynamic(() => import("page_provider/RemoteComponent"), {
   ssr: false,
 });
-const RemoteComponent2 = lazy(() => import("app_provider/RemoteComponent"));
+const RemoteComponent2 = dynamic(() => import("app_provider/RemoteComponent"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
