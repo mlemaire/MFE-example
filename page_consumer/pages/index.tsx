@@ -1,9 +1,7 @@
 import dynamic from "next/dynamic";
 import { lazy, Suspense } from "react";
 
-const RemoteComponent = dynamic(() => import("page_provider/RemoteComponent"), {
-  ssr: false,
-});
+const RemoteComponent = lazy(() => import("page_provider/RemoteComponent"));
 const RemoteComponent2 = dynamic(() => import("app_provider/RemoteComponent"), {
   ssr: false,
 });
@@ -22,9 +20,7 @@ export default function Home() {
           <p className="text-sm italic text-slate-400">
             MFE nextjs (page router)
           </p>
-          <Suspense fallback={<div>Loading...</div>}>
-            <RemoteComponent name={"Tom"} />
-          </Suspense>
+          <RemoteComponent name={"Tom"} />
         </div>
         <div className="border-2 border-blue-800 rounded-lg p-4">
           <p className="text-sm italic text-slate-400">

@@ -1,6 +1,6 @@
 "use client";
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense } from "react";
 import React from "react";
 import nodeRuntimePlugin from "@module-federation/node/runtimePlugin";
 
@@ -37,14 +37,6 @@ const LoadedRemoteComponent = lazy(() => {
 });
 
 export default function RemoteComponent({ name }: { name: string }) {
-  const [isClient, setClient] = useState(false);
-
-  useEffect(() => {
-    setClient(true);
-  }, []);
-
-  if (!isClient) return <p>burkk...</p>;
-
   return (
     <Suspense fallback={<div>Loading...</div>}>
       {<LoadedRemoteComponent name={name} />}
